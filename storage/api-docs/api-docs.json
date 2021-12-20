@@ -1,0 +1,400 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Invoice app",
+        "version": "1.0"
+    },
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Signup",
+                "description": "Returns signup user",
+                "operationId": "52ae93f94c35beade560b825daaabb6c",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "user name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password_confirmation",
+                        "in": "query",
+                        "description": "password confirmation",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login",
+                "description": "Returns login user",
+                "operationId": "1ff9c65c5cd1a8e0786e318eed856972",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "user email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "description": "password",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "description": "Returns none",
+                "operationId": "9c46b1116d22d4c4ac072e55617cdeb6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/currencies": {
+            "get": {
+                "tags": [
+                    "Extra endpoints"
+                ],
+                "summary": "Get list of currencies",
+                "description": "Returns list of currencies",
+                "operationId": "89cf8482d6e813749e300fcf705616a6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/invoices": {
+            "get": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Get list of invoices",
+                "description": "Returns list of invoices",
+                "operationId": "86df76121ef8c55b5f81c0ae5effe4c6",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/invoices/{id}": {
+            "get": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Get invoice information",
+                "description": "Returns invoice data",
+                "operationId": "f2aa353da76819e586000a0b4186f497",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "invoice id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/invoices/create": {
+            "post": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Create invoice",
+                "description": "Returns invoice data",
+                "operationId": "a534630f4d2947f4d28b575bfdf89439",
+                "parameters": [
+                    {
+                        "name": "currency_id",
+                        "in": "query",
+                        "description": "currency id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "status_id",
+                        "in": "query",
+                        "description": "status id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "total",
+                        "in": "query",
+                        "description": "total amount",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "tax",
+                        "in": "query",
+                        "description": "tax",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "invoice_date",
+                        "in": "query",
+                        "description": "invoice date",
+                        "required": true,
+                        "schema": {
+                            "type": "datetime"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/invoices/assign": {
+            "patch": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Send invoice to user",
+                "description": "Returns assign data",
+                "operationId": "e6e62475fbbaea093cfe55e9eed1b61d",
+                "parameters": [
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "invoice id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "receiver_id",
+                        "in": "query",
+                        "description": "invoice receiver user id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/invoices/expired": {
+            "get": {
+                "tags": [
+                    "Invoices"
+                ],
+                "summary": "Get list of expired invoices",
+                "description": "Returns list of expired invoices",
+                "operationId": "482c7dae92ec264adc022ab9839422c8",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/roles": {
+            "get": {
+                "tags": [
+                    "Extra endpoints"
+                ],
+                "summary": "Get list of roles",
+                "description": "Returns list of roles",
+                "operationId": "c9cc6f026a7a6ed11458c4d5aa3ee0e7",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/statuses": {
+            "get": {
+                "tags": [
+                    "Extra endpoints"
+                ],
+                "summary": "Get list of statuses",
+                "description": "Returns list of statuses",
+                "operationId": "c86cf3e207ac0141e52e8cada70b5b5c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/auth/users": {
+            "get": {
+                "tags": [
+                    "Extra endpoints"
+                ],
+                "summary": "Get list of users",
+                "description": "Returns list of users",
+                "operationId": "af293576bd52628b0e0a074d82c2678b",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
